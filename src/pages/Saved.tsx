@@ -1,12 +1,9 @@
-import { Component } from 'react';
+import { Component } from 'react'
 
 class Saved extends Component {
-
-    render () {
-        return <>
-        jodododoodod
-        </>
-    }
+  render() {
+    return <>jodododoodod</>
+  }
 }
 
-export default Saved;
+export default Saved

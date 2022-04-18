@@ -1,12 +1,9 @@
-import { Component } from 'react';
+import { Component } from 'react'
 
 class Chat extends Component {
-
-    render () {
-        return <>
-        jodododoodod
-        </>
-    }
+  render() {
+    return <>jodododoodod</>
+  }
 }
 
-export default Chat;
+export default Chat

@@ -1,31 +1,33 @@
 import { Flex, IconBtn } from "components/common";
-import {paths} from "routes/paths";
-import { Link, NavLink } from "react-router-dom";
-import { useLayoutEffect, useState } from "react";
+import { paths } from "routes/paths";
+import { NavLink, useLocation } from "react-router-dom";
+import { useTheme } from "@mui/material";
 
 const Menu = () => {
-    const [activeLink, setActiveLink] = useState('')
-    
-    useLayoutEffect(()=> {
+    const { pathname } = useLocation()
+    const { palette: { primary } } = useTheme();
 
-    })
+    const activeLink = (linkPath: string, currentPath: string): boolean => linkPath ? currentPath.includes(linkPath) : currentPath === '/';
+
     return (
-    <Flex className='mobile-menu secondary'>
-        {paths.map(path => (
-            <NavLink
-            style={({ isActive }) => {
-                isActive && setActiveLink(path.key)
-                return {};
-              }}
-            to={path.to} key={path.key}
-            >
-            <IconBtn isActive={activeLink === path.key}><path.icon color="primary" /></IconBtn>
-            </NavLink>
-            
-        ))}
-    
-    </Flex>
-)
+        <Flex className='mobile-menu secondary'>
+            {paths.map(path => {
+                const isActive = activeLink(path.to, pathname)
+                return (
+                    <NavLink
+                        to={path.to}
+                        key={path.key}
+                    >
+                        <IconBtn isActive={isActive}><path.icon style={{ fill: isActive ? '#FFF' : primary.main }} /></IconBtn>
+                    </NavLink>
+
+                )
+            }
+
+            )}
+
+        </Flex>
+    )
 }
 
 

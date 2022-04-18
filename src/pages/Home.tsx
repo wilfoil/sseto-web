@@ -1,12 +1,9 @@
-import { Component } from 'react';
+import { Component } from 'react'
 
 class Home extends Component {
-
-    render () {
-        return <>
-        jodododoododj
-        </>
-    }
+  render() {
+    return <>jodododoododj</>
+  }
 }
 
-export default Home;
+export default Home
