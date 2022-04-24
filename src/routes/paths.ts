@@ -4,10 +4,15 @@ import SearchIcon from '@mui/icons-material/Search'
 import FavoriteIcon from '@mui/icons-material/FavoriteBorder'
 import ChatIcon from '@mui/icons-material/ChatBubbleOutline'
 import ProfileIcon from '@mui/icons-material/Person'
+import VillaIcon from '@mui/icons-material/Villa'
+import ApartmentIcon from '@mui/icons-material/Apartment'
+import LandscapeIcon from '@mui/icons-material/Landscape'
 import Home from 'pages/Home'
 import Search from 'pages/Search'
 import Saved from 'pages/Saved'
 import Profile from 'pages/Profile'
+import Chat from 'pages/Chat'
+import List from 'pages/List'
 
 interface IPath {
   to: string
@@ -44,7 +49,7 @@ export const paths: IPath[] = [
     key: 'key-4',
     name: 'Chat',
     icon: ChatIcon,
-    component: ChatIcon,
+    component: Chat,
   },
   {
     to: 'me',
@@ -53,4 +58,19 @@ export const paths: IPath[] = [
     icon: ProfileIcon,
     component: Profile,
   },
+]
+
+export const secondaryPaths: Array<any> = [
+  {
+    to: 'lists/:listId',
+    key: 'key-6',
+    component: List,
+  },
+]
+
+export const productCategories = [
+  {name: 'house', icon: HomeIcon},
+  {name: 'villa', icon: VillaIcon},
+  {name: 'apartment', icon: ApartmentIcon},
+  {name: 'land', icon: LandscapeIcon},
 ]

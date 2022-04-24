@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #131629 !important;
+  height: 100vh;
 }
 
 code {
@@ -12,5 +14,11 @@ code {
     monospace;
 }
 
+#root {
+  height: 100%;
+  
+}
+
 .primary {background-color: #2972FE;}
 .secondary {background-color: #131629;}
+.light-secondary {background-color: #2972fe1a}

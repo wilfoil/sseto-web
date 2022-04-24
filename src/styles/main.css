@@ -1,5 +1,5 @@
 .mobile-menu {
-    padding: 15px 10px;
+    padding: 15px 10px !important;
     position: absolute;
     width: 100%;
     bottom: 0;
