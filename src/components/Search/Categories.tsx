@@ -3,7 +3,7 @@ import { productCategories } from "routes/paths";
 
 
 
-const Categories = () => (<Flex flexChild='22%'>
+const Categories = () => (<Flex flexChild='22%' padding="1em 10px">
 {productCategories.map(product => <CategoryItem role='button' to={`lists/${product.name}`} key={product.name}>
 <Flex columns>
     <IconBtn radius="50%"><product.icon color='primary' /></IconBtn>

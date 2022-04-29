@@ -4,9 +4,9 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import { Amount, Flex, IconBtn, Label, MuiCard } from './common';
 import LocationIcon from '@mui/icons-material/LocationOn';
-import FavoriteIcon from '@mui/icons-material/FavoriteBorder'
 import BedroomIcon from '@mui/icons-material/Hotel';
 import BathroomIcon from '@mui/icons-material/Bathtub';
+import Favorite from './Favorite';
 
 const ItemCard = ({item, ...props}:any) => {
   return (
@@ -25,7 +25,7 @@ const ItemCard = ({item, ...props}:any) => {
             <IconBtn padding='0 5px' margin='0 2px'><BathroomIcon color='primary' sx={{ fontSize: 15 }} />&nbsp;<Label size='50%'>2 Baths</Label></IconBtn>
           </Flex>
 
-          <Flex padding='0'><Label size='70%'><LocationIcon color='primary' sx={{ fontSize: 15 }} /> <span>Rubaga, kampala</span></Label><FavoriteIcon fontSize='small' color='primary' /></Flex>
+          <Flex padding='0'><Label size='70%'><LocationIcon color='primary' sx={{ fontSize: 15 }} /> <span>Rubaga, kampala</span></Label><Favorite saved={false} onClick={()=>{}} /></Flex>
         </CardContent>
       </CardActionArea>
     </MuiCard>

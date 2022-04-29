@@ -1,28 +1,19 @@
-import { InputAdornment, OutlinedInput } from "@mui/material"
-import { Flex, IconBtn } from "../common"
+import { InputAdornment } from "@mui/material"
+import { Flex, IconBtn, Input } from "../common"
 import SearchIcon from '@mui/icons-material/Search'
 import FilterListIcon from '@mui/icons-material/FilterList';
 
 const Search = () => {
 
     return (
-        <Flex>
-            <OutlinedInput
-            id="outlined-adornment-password"
-            type='search'
-            endAdornment={
-              <InputAdornment position="end">
-                <IconBtn
-                  aria-label="toggle password visibility"
-                  edge="end"
-                >
-                  <SearchIcon color="primary" />
-                </IconBtn>
-              </InputAdornment>
-            }
-            label="Password"
+        <Flex padding="1em 10px">
+            <Input
+            id="search-input"
+            type='text'
+            endAdornment={<InputAdornment position="end"><SearchIcon htmlColor="#A5ABB3" fontSize="small" /></InputAdornment>}
+            placeholder="Search"
           />
-            <IconBtn><FilterListIcon color="primary" /></IconBtn>
+            <IconBtn><FilterListIcon color="primary" fontSize="small" /></IconBtn>
         </Flex>
     )
 }

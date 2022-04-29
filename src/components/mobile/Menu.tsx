@@ -7,25 +7,31 @@ const Menu = () => {
     const { pathname } = useLocation()
     const { palette: { primary } } = useTheme();
 
-    const activeLink = (linkPath: string, currentPath: string): boolean => linkPath ? currentPath.includes(linkPath) : currentPath === '/';
+    const activeLink = (): string => {
+        const menuTab = paths.find(i => `/${i.to}` === pathname);
+
+        if (menuTab) return menuTab.to;
+        return '';
+    }
+
+    const isActive = activeLink()
 
     return (
         <Flex className='mobile-menu secondary'>
             {paths.map(path => {
-                const isActive = activeLink(path.to, pathname)
+                const active = isActive === path.to
                 return (
                     <NavLink
                         to={path.to}
                         key={path.key}
                     >
-                        <IconBtn isActive={isActive}><path.icon style={{ fill: isActive ? '#FFF' : primary.main }} /></IconBtn>
+                        <IconBtn isActive={active}><path.icon style={{ fill: active ? '#FFF' : primary.main }} /></IconBtn>
                     </NavLink>
 
                 )
             }
 
             )}
-
         </Flex>
     )
 }

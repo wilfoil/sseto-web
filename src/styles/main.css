@@ -1,6 +1,6 @@
 .mobile-menu {
     padding: 15px 10px !important;
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
     border-radius: 20px 20px 0px 0px;
