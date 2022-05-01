@@ -1,30 +1,61 @@
 import styled from '@emotion/styled'
-import { Card, Chip, IconButton, OutlinedInput } from '@mui/material'
+import { Card, Chip, Divider, IconButton, OutlinedInput } from '@mui/material'
 import { NavLink } from 'react-router-dom'
+
+interface IGenericProps {
+  width?: string
+  padding?: string
+  sticky?: boolean
+  absolute?: boolean
+  relative?: boolean
+  top?: string
+  zIndex?: string
+  bg?: string
+}
 
 interface IFlexProps {
   flexChild?: string
   columns?: boolean
-  width?: string
-  padding?: string
   space?: 'space-between' | 'center' | 'space-around' | 'start' | 'end'
+  align?: 'flex-start' | 'flex-end'
 }
 
-const columnFlow = ({ columns }: IFlexProps) => `flex-direction: ${columns ? 'column' : 'row'};`
-const flexEl = ({ flexChild }: IFlexProps) =>
+const columnFlow = ({ columns }: IFlexProps & IGenericProps) => `flex-direction: ${columns ? 'column' : 'row'};`
+const flexEl = ({ flexChild }: IFlexProps & IGenericProps) =>
   flexChild &&
   `
   > * {
     width: ${flexChild};
   }
 `
+const genericStyles = ({padding, width, ...props}: IGenericProps) => {
+  const paddingCss = padding ? `padding: ${padding};` : 'padding: 0 10px;';
+  const widthCss = width ?  `width: ${width}` : 'width: 100%;';
+  let position = '';
+  let zIndex = ''
+  let top = ''
+  let bg = ''
+  if(props.sticky) position = 'position: sticky;'
+  if(props.absolute) position = 'position: absolute;'
+  if(props.relative) position = 'position: relative;'
+  if(props.zIndex) zIndex = `z-index: ${props.zIndex};`
+  if(props.top) top = `top: ${props.top};`
+  if(props.bg) bg = `background-color: ${props.bg};`
+  return `
+    ${paddingCss}
+    ${widthCss}
+    ${position}
+    ${zIndex}
+    ${top}
+    ${bg}
+  `
+}
 
-export const Flex = styled.div<IFlexProps>`
+export const Flex = styled.div<IFlexProps & IGenericProps>`
   display: flex;
-  align-items: center;
+  align-items: ${({ align }) => align || 'center'};
   justify-content: ${({ space }) => space || 'space-between'};
-  padding: ${({ padding }) => padding || '0 10px'};
-  width: ${({ width }) => width || '100%'};
+  ${genericStyles};
   ${columnFlow}
   ${flexEl};
 `
@@ -107,6 +138,12 @@ export const Input = styled(OutlinedInput)`
     font-size: 90%;
   }
 `
+
+export const DivideLine = styled(Divider)`
+  width: 100%;
+  border-color: #282C49;
+`
+export const HorizontalSpace = styled.div<{height?: string}>`padding-top: ${({height})=> height || '1em'};`
 
 export const MuiCard = styled(Card)<{ width?: string; margin?: string }>`
   width: ${({ width }) => width || '48%'};

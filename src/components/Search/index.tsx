@@ -6,7 +6,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 const Search = () => {
 
     return (
-        <Flex padding="1em 10px">
+        <Flex padding="1em 10px" sticky top='0' zIndex="4" bg="#131629">
             <Input
             id="search-input"
             type='text'

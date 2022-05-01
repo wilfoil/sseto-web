@@ -42,7 +42,7 @@ const List = () => {
       <PageContent>
         <Flex padding='0' columns={true}>
         {[1, 2, 2, 3].map((item) => (
-          <ItemCard width="90%" margin="1em 0 0 0" />
+          <ItemCard width="90%" margin="1em 0 0 0" onClick={()=>navigate('/listing/test')} />
         ))}
       </Flex>
       </PageContent>

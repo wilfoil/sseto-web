@@ -13,6 +13,7 @@ import Saved from 'pages/Saved'
 import Profile from 'pages/Profile'
 import Chat from 'pages/Chat'
 import List from 'pages/List'
+import ListingDetails from 'pages/ListingDetails'
 
 interface IPath {
   to: string
@@ -65,6 +66,14 @@ export const secondaryPaths: Array<any> = [
     to: 'lists/:listId',
     key: 'key-6',
     component: List,
+  },
+]
+
+export const otherPaths: Array<any> = [
+  {
+    to: 'listing/:listingId',
+    key: 'key-7',
+    component: ListingDetails,
   },
 ]
 

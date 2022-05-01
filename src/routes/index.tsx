@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Main from 'pages/_main'
 import { ThemeProvider } from '@mui/material'
 import theme from 'styles/theme'
-import { paths, secondaryPaths } from './paths'
+import { otherPaths, paths, secondaryPaths } from './paths'
 
 function App() {
   return (
@@ -22,6 +22,9 @@ function App() {
                 <Route path={path.to} key={path.key} element={<path.component />} />
               ))}
             </Route>
+            {otherPaths.map((path) => (
+                <Route path={path.to} key={path.key} element={<path.component />} />
+              ))}
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
