@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #131629 !important;
   height: 100vh;
+  color: #FFF !important;
 }
 
 code {
@@ -19,7 +20,8 @@ code {
   
 }
 
-.primary {background-color: #2972FE;}
+.primary {background-color: #347afc;}
 .secondary {background-color: #131629;}
 .light-secondary {background-color: #2972fe1a}
 .gray {background: #A5ABB3;}
+.primary-gradient {background: linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%);}

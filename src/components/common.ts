@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Card, Chip, Divider, IconButton, OutlinedInput } from '@mui/material'
+import { Button, Card, Chip, Divider, IconButton, OutlinedInput } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
 interface IGenericProps {
@@ -8,7 +8,9 @@ interface IGenericProps {
   sticky?: boolean
   absolute?: boolean
   relative?: boolean
+  fixed?: boolean
   top?: string
+  bottom?: string
   zIndex?: string
   bg?: string
 }
@@ -34,12 +36,15 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   let position = '';
   let zIndex = ''
   let top = ''
+  let bottom = ''
   let bg = ''
   if(props.sticky) position = 'position: sticky;'
   if(props.absolute) position = 'position: absolute;'
   if(props.relative) position = 'position: relative;'
+  if(props.fixed) position = 'position: fixed;'
   if(props.zIndex) zIndex = `z-index: ${props.zIndex};`
   if(props.top) top = `top: ${props.top};`
+  if(props.bottom) bottom = `bottom: ${props.bottom};`
   if(props.bg) bg = `background-color: ${props.bg};`
   return `
     ${paddingCss}
@@ -47,6 +52,7 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
     ${position}
     ${zIndex}
     ${top}
+    ${bottom}
     ${bg}
   `
 }
@@ -113,19 +119,21 @@ export const Tag = styled(Chip)`
 `
 
 export const Amount = styled.span`
-  color: #2972fe;
+  color: #347afc;
   span {
     color: #fff;
     font-size: 70%;
   }
 `
 
-export const Label = styled.label<{ size?: string }>`
+export const Label = styled.label<{ size?: string } & IGenericProps>`
   color: #fff;
   ${({ size }) => size && `font-size: ${size};`}
   display: flex;
   align-items: center;
   text-transform: capitalize;
+  ${genericStyles};
+  > * {margin: 0;}
 `
 
 export const Input = styled(OutlinedInput)`
@@ -144,6 +152,17 @@ export const DivideLine = styled(Divider)`
   border-color: #282C49;
 `
 export const HorizontalSpace = styled.div<{height?: string}>`padding-top: ${({height})=> height || '1em'};`
+export const MuiButton = styled(Button)`
+  border-radius: 30px;
+  background: linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%);
+  flex: 80%;
+  width: auto;
+  padding-top: 12px;
+  padding-bottom: 12px;
+`
+export const Table = styled.table<IGenericProps>`
+  ${genericStyles}
+`
 
 export const MuiCard = styled(Card)<{ width?: string; margin?: string }>`
   width: ${({ width }) => width || '48%'};
@@ -154,7 +173,6 @@ export const MuiCard = styled(Card)<{ width?: string; margin?: string }>`
 `
 export const Header = styled(Flex)`
   position: fixed;
-  background-color: #131629;
   top: 0;
   z-index: 2;
 `

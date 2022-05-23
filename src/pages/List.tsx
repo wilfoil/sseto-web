@@ -28,7 +28,7 @@ const List = () => {
 
   return (
     <>
-      <Header>
+      <Header bg='#131629' padding='.5em 10px'>
         <Label size="80%">
           <BackIcon color="primary" fontSize="large" onClick={goBack} />
           &nbsp;&nbsp;&nbsp;&nbsp;<h1>{title}</h1>
