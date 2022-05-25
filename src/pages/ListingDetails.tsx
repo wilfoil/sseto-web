@@ -1,4 +1,4 @@
-import { DivideLine, Flex, Label, HorizontalSpace, Tag, PageContent, IconBtn, Header, Table } from 'components/common'
+import { DivideLine, Flex, Label, HorizontalSpace, Tag, PageContent, IconBtn, Header } from 'components/common'
 import Gallery from 'components/ListingDetails/Gallery'
 import Location from 'components/ListingDetails/Location'
 import { Component } from 'react'
@@ -43,18 +43,6 @@ class ListingDetails extends Component {
         Beatae consequatur inventore veniam repudiandae optio facere harum recusandae, 
         ipsa non quia ullam dicta nostrum dolorem eaque laboriosam blanditiis tempora laudantium assumenda?
       </p>
-
-      <Label size='90%' padding='0'><h2>Features & facilities</h2></Label>
-      <Table bg='#131629'>
-          <tbody>
-            {[1].map(feature => (
-              <tr key={feature.id}>
-                <td>The table body</td>
-                <td>with two columns</td>
-              </tr>
-            ))}
-          </tbody>
-      </Table>
       </PageContent>
     <ListingCTA />
     </>
