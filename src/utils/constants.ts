@@ -6,4 +6,9 @@ export const FIREBASE_CONFIG = {
     messagingSenderId: process.env.REACT_APP_FB_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FB_APP_ID,
     measurementId: process.env.REACT_APP_FB_MEASUREMENT_ID
-}
+};
+
+export const COLLECTIONS = {
+    LISTING: 'listings',
+    REALTOR: 'realtors'
+};
