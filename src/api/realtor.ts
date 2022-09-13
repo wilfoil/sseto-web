@@ -11,6 +11,7 @@ export const addRealtor = async (newRealtor: IRealtor) => {
         return { message: 'Realtor added successfully', success: true, data };
     } catch (error) {
         console.log(error);
+        throw Error(String(error))
     }
 };
 

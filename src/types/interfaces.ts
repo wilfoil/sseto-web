@@ -2,7 +2,7 @@ import { ListingType } from './enums'
 
 export interface IRealtor {
     name: string
-    phone: number
+    phone: string
     email: string
     photoUrl: string
 }

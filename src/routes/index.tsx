@@ -1,5 +1,6 @@
 import React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
+import { Toaster } from 'react-hot-toast'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Main from 'pages/_main'
@@ -27,6 +28,7 @@ function App() {
               ))}
           </Routes>
         </BrowserRouter>
+        <Toaster />
       </ThemeProvider>
     </>
   )

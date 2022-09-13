@@ -1,7 +1,8 @@
-import { getStorage, ref, uploadBytes, deleteObject } from 'firebase/storage';
+import { ref, uploadBytes, deleteObject } from 'firebase/storage';
 import { BucketFolders } from 'types/enums';
+import { firebaseStorage } from './firebase';
 
-const STORAGE = getStorage();
+const STORAGE = firebaseStorage;
 
 export const uploadFile = async (file: File, folder: BucketFolders = BucketFolders.listings) => {
     const path = `${folder}/${file.name}-s-${Date.now()}`;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Button, Card, Chip, Divider, IconButton, OutlinedInput } from '@mui/material'
+import { Button, ButtonProps, Card, Chip, Dialog, Divider, IconButton, OutlinedInput, Tab } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
 interface IGenericProps {
@@ -13,6 +13,8 @@ interface IGenericProps {
   bottom?: string
   zIndex?: string
   bg?: string
+  flex?: string
+  margin?: string
 }
 
 interface IFlexProps {
@@ -38,6 +40,8 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   let top = ''
   let bottom = ''
   let bg = ''
+  let flex = ''
+  let margin = ''
   if(props.sticky) position = 'position: sticky;'
   if(props.absolute) position = 'position: absolute;'
   if(props.relative) position = 'position: relative;'
@@ -46,6 +50,8 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   if(props.top) top = `top: ${props.top};`
   if(props.bottom) bottom = `bottom: ${props.bottom};`
   if(props.bg) bg = `background-color: ${props.bg};`
+  if(props.flex) flex = `flex: ${props.flex};`
+  if(props.margin) margin = `margin: ${props.margin};`
   return `
     ${paddingCss}
     ${widthCss}
@@ -54,6 +60,8 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
     ${top}
     ${bottom}
     ${bg}
+    ${flex}
+    ${margin}
   `
 }
 
@@ -127,7 +135,7 @@ export const Amount = styled.span`
 `
 
 export const Label = styled.label<{ size?: string } & IGenericProps>`
-  color: #fff;
+  color: ${({color}) => color || '#fff'};
   ${({ size }) => size && `font-size: ${size};`}
   display: flex;
   align-items: center;
@@ -152,11 +160,16 @@ export const DivideLine = styled(Divider)`
   border-color: #282C49;
 `
 export const HorizontalSpace = styled.div<{height?: string}>`padding-top: ${({height})=> height || '1em'};`
-export const MuiButton = styled(Button)`
+const variantProp = ({variant}: ButtonProps) => (`
+color: ${variant === 'outlined' ? '#347afc' : '#FFF' };
+${variant === 'outlined' ? '' : 'background: linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%);' }
+`)
+export const MuiButton = styled(Button)<IGenericProps>`
   border-radius: 30px;
-  background: linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%);
-  flex: 80%;
+  ${variantProp}
+  flex: ${({flex}) => flex || '80%'};
   width: auto;
+  ${genericStyles}
   padding-top: 12px;
   padding-bottom: 12px;
 `
@@ -180,4 +193,64 @@ export const Header = styled(Flex)`
 export const PageContent = styled(Flex)`
   padding-top: 5em;
   padding-bottom: 5em;
+`
+
+export const StyledTab = styled(Tab)`
+background: #FFF;
+`
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  input { color: #000 !important; }
+`
+
+export const StyledDialog = styled(Dialog)`
+  [role=dialog] {
+    padding: 0 1em 1em;
+    min-width: 30%;
+  }
+`
+
+export const ImageInput = styled.div`
+  position: relative;
+  padding-bottom: 25px;
+
+  .MuiAvatar-root {
+    opacity: 1;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto;
+    transition: .5s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    max-width:180px;
+  }
+
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  &:hover {
+    MuiAvatar-root { opacity: 0.3 }
+    .middle { opacity: 1 }
+  }
+  input[type=file] { display: none }
+
+  .custom-file-upload {
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    background-color: #347afc;
+  }
 `

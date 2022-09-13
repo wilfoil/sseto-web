@@ -14,6 +14,7 @@ import Profile from 'pages/Profile'
 import Chat from 'pages/Chat'
 import List from 'pages/List'
 import ListingDetails from 'pages/ListingDetails'
+import Admin from 'pages/Admin'
 
 interface IPath {
   to: string
@@ -74,6 +75,11 @@ export const otherPaths: Array<any> = [
     to: 'listing/:listingId',
     key: 'key-7',
     component: ListingDetails,
+  },
+  {
+    to: 'managex',
+    key: 'key-8',
+    component: Admin,
   },
 ]
 

@@ -1,0 +1,1 @@
+export const realtorFormFields: {[key: string]: string} = {email: 'email', phone: 'tel'}
