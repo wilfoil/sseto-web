@@ -10,13 +10,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import Tabs from '@mui/material/Tabs';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import { Flex, StyledTab } from 'components/common';
+import { Flex, StyledTab } from 'styles/common';
 
 import NewRealtorForm from 'components/Admin/NewRealtorForm';
 import NewListingForm from 'components/Admin/NewListingForm';
 
 const IconTabs = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(2);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

@@ -1,4 +1,4 @@
-import { Flex } from "components/common"
+import { Flex } from "styles/common"
 import styled from '@emotion/styled'
 
 const Container = styled(Flex)`

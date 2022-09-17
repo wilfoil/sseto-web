@@ -1,7 +1,7 @@
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
-import { Amount, Flex, MuiCard } from './common';
+import { Amount, Flex, MuiCard } from '../styles/common';
 import BedroomIcon from '@mui/icons-material/Hotel';
 import BathroomIcon from '@mui/icons-material/Bathtub';
 import Favorite from './Favorite';

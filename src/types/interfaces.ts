@@ -8,7 +8,7 @@ export interface IRealtor {
 }
 
 export interface IListing {
-    name: string
+    title: string
     location: number[]
     overview: string
     price: number

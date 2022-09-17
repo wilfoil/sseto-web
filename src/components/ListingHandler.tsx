@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material"
-import { Flex, IconBtn, Label } from "./common"
+import { Flex, IconBtn, Label } from "../styles/common"
 import ChatIcon from '@mui/icons-material/Chat';
 import PhoneIcon from '@mui/icons-material/Phone';
 

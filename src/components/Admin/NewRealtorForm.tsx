@@ -2,7 +2,7 @@ import { Add } from '@mui/icons-material';
 import { Avatar, TextField } from '@mui/material';
 import { uploadFile } from 'api/fileStorage';
 import { addRealtor } from 'api/realtor';
-import { Flex, IconBtn, ImageInput, MuiButton, StyledForm } from 'components/common';
+import { Flex, IconBtn, ImageInput, MuiButton, StyledForm } from 'styles/common';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -46,7 +46,7 @@ const NewRealtorForm = ({onOpen}: any) => {
                 key={key}
                 name={key}
                 label={key}
-                type={realtorFormFields[key] || 'text'}
+                type={realtorFormFields[key]?.type || 'text'}
                 variant="standard"
                 helperText={error}
                 value={value}

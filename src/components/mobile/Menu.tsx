@@ -1,4 +1,4 @@
-import { Flex, IconBtn } from "components/common";
+import { Flex, IconBtn } from "styles/common";
 import { paths } from "routes/paths";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material";

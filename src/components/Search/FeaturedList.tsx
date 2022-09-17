@@ -1,4 +1,4 @@
-import { Flex, Heading, Link } from "components/common";
+import { Flex, Heading, Link } from "styles/common";
 import ItemCard from "components/ItemCard";
 import { useNavigate } from "react-router-dom";
 

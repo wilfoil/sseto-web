@@ -1,4 +1,4 @@
-import { DivideLine, Flex, Label, HorizontalSpace, Tag, PageContent, IconBtn, Header } from 'components/common'
+import { DivideLine, Flex, Label, HorizontalSpace, Tag, PageContent, IconBtn, Header } from 'styles/common'
 import Gallery from 'components/ListingDetails/Gallery'
 import Location from 'components/ListingDetails/Location'
 import { Component } from 'react'

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Button, ButtonProps, Card, Chip, Dialog, Divider, IconButton, OutlinedInput, Tab } from '@mui/material'
+import { Button, ButtonProps, Card, Chip, Dialog, Divider, FormControlLabel, IconButton, OutlinedInput, Tab, TextField } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
 interface IGenericProps {
@@ -25,7 +25,7 @@ interface IFlexProps {
 }
 
 const columnFlow = ({ columns }: IFlexProps & IGenericProps) => `flex-direction: ${columns ? 'column' : 'row'};`
-const flexEl = ({ flexChild }: IFlexProps & IGenericProps) =>
+export const flexEl = ({ flexChild }: IFlexProps & IGenericProps) =>
   flexChild &&
   `
   > * {
@@ -204,12 +204,15 @@ export const StyledForm = styled.form`
   flex-direction: column;
   text-transform: capitalize;
   input { color: #000 !important; }
+
+  &> * { margin-bottom: .6em !important; }
 `
 
 export const StyledDialog = styled(Dialog)`
   [role=dialog] {
     padding: 0 1em 1em;
     min-width: 30%;
+    color: #666 !important;
   }
 `
 
@@ -253,4 +256,28 @@ export const ImageInput = styled.div`
     cursor: pointer;
     background-color: #347afc;
   }
+`
+
+export const StyledLabelledControl = styled(FormControlLabel)<{controlWidth?: string}>`
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+
+  & > :not(span) {
+    width: ${({controlWidth}) => controlWidth || '70%'};
+  }
+
+  &.label-left > span { margin-right: auto; }
+`
+
+export const StyledTextField = styled(TextField)`
+  & input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  & input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  & input[type=number] { -moz-appearance': textfield }
 `

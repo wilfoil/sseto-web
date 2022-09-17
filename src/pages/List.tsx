@@ -1,4 +1,4 @@
-import { Flex, Header, IconBtn, Label, PageContent } from 'components/common'
+import { Flex, Header, IconBtn, Label, PageContent } from 'styles/common'
 import BackIcon from '@mui/icons-material/ArrowBack'
 import SearchIcon from '@mui/icons-material/Search'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'

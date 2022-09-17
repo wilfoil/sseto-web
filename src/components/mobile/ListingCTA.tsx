@@ -1,4 +1,4 @@
-import { Amount, Flex, MuiButton } from "components/common"
+import { Amount, Flex, MuiButton } from "styles/common"
 
 const ListingCTA = () => {
 

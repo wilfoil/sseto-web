@@ -1,4 +1,4 @@
-import { CategoryItem, Flex, IconBtn } from "components/common";
+import { CategoryItem, Flex, IconBtn } from "styles/common";
 import { productCategories } from "routes/paths";
 
 

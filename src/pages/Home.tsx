@@ -1,4 +1,4 @@
-import { Header, Label, PageContent } from 'components/common'
+import { Header, Label, PageContent } from 'styles/common'
 import Search from 'components/Search'
 import Categories from 'components/Search/Categories'
 import FeaturedList from 'components/Search/FeaturedList'

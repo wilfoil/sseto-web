@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import { Label, StyledDialog } from 'components/common';
+import { Label, StyledDialog } from 'styles/common';
 
 const ActionDialog = ({children, dialogTitle, renderActions, renderToggle}: any) => {
   const [open, setOpen] = useState(true);
