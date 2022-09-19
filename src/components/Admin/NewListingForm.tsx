@@ -1,15 +1,14 @@
 import { Add } from '@mui/icons-material';
 import { NativeSelect, Switch } from '@mui/material';
-import { addListing, getRealtor } from 'api';
 import { Flex, IconBtn, MuiButton, StyledForm, StyledLabelledControl, StyledTextField } from 'styles/common';
 import MediaUpload from 'components/MediaUpload';
 import { useFormik } from 'formik';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { ListingType } from 'types';
 import { listingFormFields } from 'utils/formFields';
 import ActionDialog from './ActionDialog';
 import styled from '@emotion/styled';
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent } from 'react';
 
 const StyledSelect = styled(NativeSelect)`
 color: #000 !important;

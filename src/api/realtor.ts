@@ -1,5 +1,5 @@
-import { addDoc, collection, getDoc, getDocs, updateDoc, doc, deleteDoc, query, QueryConstraint } from '@firebase/firestore';
-import { IListing, IListingUpdate, IRealtor } from 'types/interfaces';
+import { addDoc, collection, getDoc, updateDoc, doc, deleteDoc } from '@firebase/firestore';
+import { IListingUpdate, IRealtor } from 'types/interfaces';
 import { COLLECTIONS } from 'utils/constants';
 import { firestoreDB } from './firebase';
 import { filter, filterCollection, setLimit } from './utils';

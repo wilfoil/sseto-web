@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { Flex, Header, IconBtn, Label, PageContent, Tag } from 'styles/common'
 import SearchIcon from '@mui/icons-material/Search'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import ItemCard from 'components/ItemCard'
 import { productCategories } from 'routes/paths'
 
