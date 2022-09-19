@@ -15,6 +15,7 @@ interface IGenericProps {
   bg?: string
   flex?: string
   margin?: string
+  height?: string
 }
 
 interface IFlexProps {
@@ -22,9 +23,10 @@ interface IFlexProps {
   columns?: boolean
   space?: 'space-between' | 'center' | 'space-around' | 'start' | 'end'
   align?: 'flex-start' | 'flex-end'
+  wrap?: boolean
 }
 
-const columnFlow = ({ columns }: IFlexProps & IGenericProps) => `flex-direction: ${columns ? 'column' : 'row'};`
+const columnFlow = ({ columns, wrap }: IFlexProps & IGenericProps) => `flex-flow: ${wrap ? 'wrap' : 'nowrap'} ${columns ? 'column' : 'row'};`
 export const flexEl = ({ flexChild }: IFlexProps & IGenericProps) =>
   flexChild &&
   `
@@ -118,12 +120,13 @@ export const Heading = styled.header`
   font-size: 125%;
 `
 
-export const Tag = styled(Chip)`
-  background-color: transparent;
+export const Tag = styled(Chip)<IGenericProps>`
   border: 1px solid #2972fe;
-  color: #2972fe;
-  height: 21px;
+  color: ${({variant, color}) => variant === 'filled' ? '' : color};
+  margin: ${({ margin }) => margin};
+  height: ${({ height }) => height || '21px'};
   font-size: 70%;
+  text-transform: capitalize;
 `
 
 export const Amount = styled.span`
@@ -208,9 +211,10 @@ export const StyledForm = styled.form`
   &> * { margin-bottom: .6em !important; }
 `
 
-export const StyledDialog = styled(Dialog)`
+export const StyledDialog = styled(Dialog)<{padding?: string, dark?: boolean}>`
   [role=dialog] {
-    padding: 0 1em 1em;
+    padding: ${({padding}) => padding || '0 1em 1em'};
+    ${({dark}) => dark && 'background: #131529;'}
     min-width: 30%;
     color: #666 !important;
   }
@@ -280,4 +284,9 @@ export const StyledTextField = styled(TextField)`
     margin: 0;
   }
   & input[type=number] { -moz-appearance': textfield }
+`
+export const StyledImage = styled.img<IGenericProps>`
+  border-radius: 5px;
+  object-fit: cover;
+  margin: ${({margin}) => margin || 'auto'};
 `

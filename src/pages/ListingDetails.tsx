@@ -22,7 +22,7 @@ class ListingDetails extends Component {
   render() {
     return <>
     <NavHeader />
-    <Gallery />
+    <Gallery images={[]} />
     <PageContent columns style={{paddingTop: 0}}>
     <Flex columns align='flex-start' padding='1em 0 0 0'>
       <Tag label='Apartment' />

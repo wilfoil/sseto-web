@@ -1,6 +1,6 @@
 import { Add } from '@mui/icons-material';
 import { NativeSelect, Switch } from '@mui/material';
-import { addListing } from 'api/listing';
+import { addListing, getRealtor } from 'api';
 import { Flex, IconBtn, MuiButton, StyledForm, StyledLabelledControl, StyledTextField } from 'styles/common';
 import MediaUpload from 'components/MediaUpload';
 import { useFormik } from 'formik';
@@ -9,7 +9,7 @@ import { ListingType } from 'types';
 import { listingFormFields } from 'utils/formFields';
 import ActionDialog from './ActionDialog';
 import styled from '@emotion/styled';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 
 const StyledSelect = styled(NativeSelect)`
 color: #000 !important;
@@ -55,6 +55,14 @@ const NewListingForm = ({ onOpen }: any) => {
       // );
     },
   });
+
+  // useEffect(()=> {
+  //   (async()=> {
+  //     const v = await getRealtor()
+  //     console.log(v);
+      
+  //   })()
+  // })
 
   const onGalleryChange = (files: File[]) => {
     formik.setFieldValue('gallery', files)
@@ -156,6 +164,8 @@ const NewListingForm = ({ onOpen }: any) => {
     const { coords } = pos;
     formik.setFieldValue('location', [coords.latitude, coords.longitude])
   });
+
+  
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>

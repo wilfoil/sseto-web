@@ -46,7 +46,6 @@ const List = () => {
         ))}
       </Flex>
       </PageContent>
-      
     </>
   )
 }

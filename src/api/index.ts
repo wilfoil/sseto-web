@@ -1,1 +1,2 @@
-export * as listing from './listing'
+export * from './listing'
+export * from './realtor'
