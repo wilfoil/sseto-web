@@ -11,7 +11,7 @@ const ActionDialog = ({children, dialogTitle, renderActions, renderToggle, ...pr
   return (
     <>
       {renderToggle(toggleVisibility)}
-      <StyledDialog open={open} onClose={toggleVisibility} {...props}>
+      <StyledDialog open={open} onClose={toggleVisibility} zIndex='1500' {...props}>
         {dialogTitle && <Label color="#000" size='150%'>{dialogTitle}</Label>}
           {children({onOpen: toggleVisibility})}
       </StyledDialog>

@@ -10,11 +10,12 @@ import LandscapeIcon from '@mui/icons-material/Landscape'
 import Home from 'pages/Home'
 import Search from 'pages/Search'
 import Saved from 'pages/Saved'
-import Profile from 'pages/Profile'
-import Chat from 'pages/Chat'
+// import Profile from 'pages/Profile'
+// import Chat from 'pages/Chat'
 import List from 'pages/List'
 import ListingDetails from 'pages/ListingDetails'
 import Admin from 'pages/Admin'
+import SearchResults from 'pages/SearchResults'
 
 interface IPath {
   to: string
@@ -46,20 +47,20 @@ export const paths: IPath[] = [
     icon: FavoriteIcon,
     component: Saved,
   },
-  {
-    to: 'chat',
-    key: 'key-4',
-    name: 'Chat',
-    icon: ChatIcon,
-    component: Chat,
-  },
-  {
-    to: 'me',
-    key: 'key-5',
-    name: 'Profile',
-    icon: ProfileIcon,
-    component: Profile,
-  },
+  // {
+  //   to: 'chat',
+  //   key: 'key-4',
+  //   name: 'Chat',
+  //   icon: ChatIcon,
+  //   component: Chat,
+  // },
+  // {
+  //   to: 'me',
+  //   key: 'key-5',
+  //   name: 'Profile',
+  //   icon: ProfileIcon,
+  //   component: Profile,
+  // },
 ]
 
 export const secondaryPaths: Array<any> = [
@@ -67,6 +68,11 @@ export const secondaryPaths: Array<any> = [
     to: 'lists/:listId',
     key: 'key-6',
     component: List,
+  },
+  {
+    to: 'search/results',
+    key: 'key-6',
+    component: SearchResults,
   },
 ]
 

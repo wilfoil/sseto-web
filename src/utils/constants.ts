@@ -8,6 +8,8 @@ export const FIREBASE_CONFIG = {
     measurementId: process.env.REACT_APP_FB_MEASUREMENT_ID
 };
 
+export const MAPS_API_KEY = process.env.REACT_APP_MAPS_API_KEY || '';
+
 export const COLLECTIONS = {
     LISTING: 'listings',
     REALTOR: 'realtors'

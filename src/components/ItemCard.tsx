@@ -8,7 +8,7 @@ import Favorite from './Favorite';
 import Location from './ListingDetails/Location';
 import Chip from './ListingDetails/Chip';
 
-const ItemCard = ({item, onClick, ...props}:any) => {
+const ItemCard = ({item, onClick, onSave, saved = false, ...props}:any) => {
   return (
     <MuiCard {...props}>
       <CardActionArea onClick={onClick}>
@@ -25,7 +25,7 @@ const ItemCard = ({item, onClick, ...props}:any) => {
             <Chip Icon={BathroomIcon} label='2 Baths' />
           </Flex>
 
-          <Flex padding='0'><Location /> <Favorite saved={false} onClick={()=>{}} /></Flex>
+          <Flex padding='0'><Location /> <Favorite saved={saved} onClick={onSave} /></Flex>
         </CardContent>
       </CardActionArea>
     </MuiCard>

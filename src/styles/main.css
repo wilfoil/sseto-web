@@ -4,4 +4,18 @@
     width: 100%;
     bottom: 0;
     border-radius: 20px 20px 0px 0px;
+    border-top: 1px solid #282C49;
+    z-index: 1400;
+}
+
+.search-results-title {
+    font-weight: normal;
+    font-size: unset;
+    white-space: nowrap;
+}
+
+.result-title {
+    padding-left: 10px;
+    font-size: 20px;
+    margin-top: 0;
 }

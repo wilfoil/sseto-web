@@ -17,7 +17,7 @@ const Menu = () => {
     const isActive = activeLink()
 
     return (
-        <Flex className='mobile-menu secondary'>
+        <Flex className='mobile-menu secondary '>
             {paths.map(path => {
                 const active = isActive === path.to
                 return (
@@ -25,7 +25,7 @@ const Menu = () => {
                         to={path.to}
                         key={path.key}
                     >
-                        <IconBtn isActive={active}><path.icon style={{ fill: active ? '#FFF' : primary.main }} /></IconBtn>
+                        <IconBtn isActive={active}><path.icon style={{ fill: active ? '#FFF' : primary.main, width: 100 }} /></IconBtn>
                     </NavLink>
 
                 )

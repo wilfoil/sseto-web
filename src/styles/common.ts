@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Button, ButtonProps, Card, Chip, Dialog, Divider, FormControlLabel, IconButton, OutlinedInput, Tab, TextField } from '@mui/material'
+import { Avatar, Button, ButtonProps, Card, Chip, Dialog, Divider, FormControlLabel, IconButton, OutlinedInput, Tab, TextField } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
 interface IGenericProps {
@@ -16,6 +16,7 @@ interface IGenericProps {
   flex?: string
   margin?: string
   height?: string
+  gap?: string
 }
 
 interface IFlexProps {
@@ -44,6 +45,7 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   let bg = ''
   let flex = ''
   let margin = ''
+  let gap = ''
   if(props.sticky) position = 'position: sticky;'
   if(props.absolute) position = 'position: absolute;'
   if(props.relative) position = 'position: relative;'
@@ -54,6 +56,7 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   if(props.bg) bg = `background-color: ${props.bg};`
   if(props.flex) flex = `flex: ${props.flex};`
   if(props.margin) margin = `margin: ${props.margin};`
+  if(props.gap) gap = `gap: ${props.gap};`
   return `
     ${paddingCss}
     ${widthCss}
@@ -64,10 +67,11 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
     ${bg}
     ${flex}
     ${margin}
+    ${gap}
   `
 }
 
-export const Flex = styled.div<IFlexProps & IGenericProps>`
+export const Flex = styled.div<IFlexProps & IGenericProps & any>`
   display: flex;
   align-items: ${({ align }) => align || 'center'};
   justify-content: ${({ space }) => space || 'space-between'};
@@ -137,11 +141,12 @@ export const Amount = styled.span`
   }
 `
 
-export const Label = styled.label<{ size?: string } & IGenericProps>`
+export const Label = styled.label<{ size?: string, space?: string } & IGenericProps>`
   color: ${({color}) => color || '#fff'};
   ${({ size }) => size && `font-size: ${size};`}
   display: flex;
   align-items: center;
+  ${({ space }) => space && `justify-content: ${space};`}
   text-transform: capitalize;
   ${genericStyles};
   > * {margin: 0;}
@@ -211,7 +216,8 @@ export const StyledForm = styled.form`
   &> * { margin-bottom: .6em !important; }
 `
 
-export const StyledDialog = styled(Dialog)<{padding?: string, dark?: boolean}>`
+export const StyledDialog = styled(Dialog)<{padding?: string, dark?: boolean, bottom?: string, noPopover?: boolean, zIndex?: string}>`
+  z-index: ${({ zIndex }) => zIndex};
   [role=dialog] {
     padding: ${({padding}) => padding || '0 1em 1em'};
     ${({dark}) => dark && 'background: #131529;'}
@@ -289,4 +295,35 @@ export const StyledImage = styled.img<IGenericProps>`
   border-radius: 5px;
   object-fit: cover;
   margin: ${({margin}) => margin || 'auto'};
+`
+
+export const ConfirmationPopup = styled(StyledDialog)`
+  ${({noPopover}) => noPopover && `z-index: 1;`}
+  [role=dialog] {
+    width: 100%;
+    bottom: ${({ bottom }) => bottom || 0};
+    position: absolute;
+    margin: 0;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 2em;
+    gap: 20px;
+    border-radius: 40px 40px 0px 0px;
+
+    hr {
+      width: 40px;
+      border: 2px solid #8080808f;
+      border-radius: 5px;
+      position: absolute;
+      top: 0;
+    }
+  }
+`;
+
+export const MuiAvatar = styled(Avatar)`
+  border-radius: 20px;
+  width: 4.4em;
+  height: 4em;
 `

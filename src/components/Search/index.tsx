@@ -1,7 +1,7 @@
 import { InputAdornment } from "@mui/material"
-import { Flex, IconBtn, Input } from "../../styles/common"
+import { Flex, Input } from "../../styles/common"
 import SearchIcon from '@mui/icons-material/Search'
-import FilterListIcon from '@mui/icons-material/FilterList';
+import Filter from "./Filter";
 
 const Search = () => {
 
@@ -13,7 +13,7 @@ const Search = () => {
             endAdornment={<InputAdornment position="end"><SearchIcon htmlColor="#A5ABB3" fontSize="small" /></InputAdornment>}
             placeholder="Search"
           />
-            <IconBtn><FilterListIcon color="primary" fontSize="small" /></IconBtn>
+            <Filter />
         </Flex>
     )
 }
