@@ -59,7 +59,7 @@ class Saved extends Component {
             ))}
           </Flex>
         </PageContent>
-        <ConfirmationPopup open={!!selected} keepMounted={true} dark={true} TransitionComponent={SlideTransition}>
+        <ConfirmationPopup zIndex='1500' open={!!selected} keepMounted={true} dark={true} TransitionComponent={SlideTransition}>
           <hr />
           <ItemCard width="100%" margin="1em 0 0 0" />
           <Label space='center'>Remove from favorite?</Label>

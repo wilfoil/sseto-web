@@ -19,3 +19,13 @@
     font-size: 20px;
     margin-top: 0;
 }
+
+.map-container {
+    width: 100%;
+    height: 100%;
+}
+
+.dark-form input {color: #FFF; padding: .5em 0; }
+.dark-form .MuiInput-root:before { border-color: #ffffff4d !important;}
+.dark-form, .dark-form .MuiFormLabel-root { color: #FFF; font-weight: 600; }
+.light-form input { color: #000; }

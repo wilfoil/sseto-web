@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Label, StyledDialog } from 'styles/common';
 
 const ActionDialog = ({children, dialogTitle, renderActions, renderToggle, ...props}: any) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const toggleVisibility = () => {
     setOpen(!open);

@@ -8,7 +8,7 @@ const Menu = () => {
     const { palette: { primary } } = useTheme();
 
     const activeLink = (): string => {
-        const menuTab = paths.find(i => `/${i.to}` === pathname);
+        const menuTab = paths.find(i => `/${i.to}` === pathname || pathname.includes(`/${i.to}/`));
 
         if (menuTab) return menuTab.to;
         return '';

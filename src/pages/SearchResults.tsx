@@ -4,16 +4,18 @@ import { Flex, Header, Label, PageContent } from 'styles/common'
 import Search from 'components/Search'
 import NotFound from 'components/NotFound'
 import Result from 'components/Search/Result'
+import { withRouter } from 'components/withRouter'
 
+class SearchResults extends Component<any> {
 
+  goBack = () => this.props.router.navigate(-1)
 
-class SearchResults extends Component {
   render() {
-    const results: any[] = [1,2,3,4,1,2,3,4,1,2,3,4]
+    const results: any[] = [1,2,3,4,1,2,3,4,1,2,3,4]    
     return <>
     <Header columns={true} bg='#131629' padding='.5em 10px'>
         <Label size="80%">
-          <BackIcon color="primary" fontSize="large" />
+          <BackIcon color="primary" fontSize="large" onClick={this.goBack} />
           &nbsp;&nbsp;&nbsp;&nbsp;<h1>Search</h1>
         </Label>
         <Search />
@@ -29,4 +31,4 @@ class SearchResults extends Component {
   }
 }
 
-export default SearchResults
+export default withRouter(SearchResults)

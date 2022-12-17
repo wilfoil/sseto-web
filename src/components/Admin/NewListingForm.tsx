@@ -33,7 +33,7 @@ const NewListingForm = ({ onOpen }: any) => {
       type: ListingType.apartment,
       assigned: {},
       gallery: [],
-      features: { bathrooms: 0, beds: 0},
+      features: { baths: 0, beds: 0},
       location: [],
       isAvailable: true,
       isRental: true,

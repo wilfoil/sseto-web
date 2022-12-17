@@ -1,6 +1,5 @@
 export enum ListingType {
     house = 'house',
-    villa = 'villa',
     apartment = 'apartment',
     land = 'land',
     flat = 'flat'

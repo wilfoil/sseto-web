@@ -15,3 +15,20 @@ export const listingFormFields: IObject = {
     beds: {type: 'number'},
     baths: {type: 'number'},
 }
+export const searchFilterFields: IObject = {
+    type: {type: 'multiselect', values: ListingType},
+    price: {type: 'range'},
+    beds: {type: 'number', minValue: 0, maxValue: 10 },
+    baths: {type: 'number', minValue: 0, maxValue: 10 },
+    features: {type: 'features', values: {
+        newlyBuilt: false,
+        furnished: false,
+        gated: true,
+        newlyBuiltx: false,
+        furnishedx: false,
+        gatedx: true,
+    }},
+    plotSize: {type: 'plotSize', values: [50, 100, 200]},
+    location: {type: 'dropdown', values: []},
+    area: {type: 'number'},
+}

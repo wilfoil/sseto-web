@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Avatar, Button, ButtonProps, Card, Chip, Dialog, Divider, FormControlLabel, IconButton, OutlinedInput, Tab, TextField } from '@mui/material'
+import { Avatar, Button, ButtonProps, Card, Chip, Dialog, Divider, FormControlLabel, IconButton, NativeSelect, OutlinedInput, Tab, TextField } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
 interface IGenericProps {
@@ -17,6 +17,7 @@ interface IGenericProps {
   margin?: string
   height?: string
   gap?: string
+  radius?: string
 }
 
 interface IFlexProps {
@@ -37,7 +38,7 @@ export const flexEl = ({ flexChild }: IFlexProps & IGenericProps) =>
 `
 const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   const paddingCss = padding ? `padding: ${padding};` : 'padding: 0 10px;';
-  const widthCss = width ?  `width: ${width}` : 'width: 100%;';
+  const widthCss = width ?  `width: ${width};` : 'width: 100%;';
   let position = '';
   let zIndex = ''
   let top = ''
@@ -46,6 +47,7 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   let flex = ''
   let margin = ''
   let gap = ''
+  let radius;
   if(props.sticky) position = 'position: sticky;'
   if(props.absolute) position = 'position: absolute;'
   if(props.relative) position = 'position: relative;'
@@ -57,6 +59,7 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
   if(props.flex) flex = `flex: ${props.flex};`
   if(props.margin) margin = `margin: ${props.margin};`
   if(props.gap) gap = `gap: ${props.gap};`
+  if(props.radius) radius = `border-radius: ${props.radius};`
   return `
     ${paddingCss}
     ${widthCss}
@@ -68,10 +71,11 @@ const genericStyles = ({padding, width, ...props}: IGenericProps) => {
     ${flex}
     ${margin}
     ${gap}
+    ${radius}
   `
 }
 
-export const Flex = styled.div<IFlexProps & IGenericProps & any>`
+export const Flex = styled.div<IFlexProps & IGenericProps>`
   display: flex;
   align-items: ${({ align }) => align || 'center'};
   justify-content: ${({ space }) => space || 'space-between'};
@@ -84,15 +88,16 @@ export const IconBtn = styled(IconButton)<{
   radius?: string
   padding?: string
   margin?: string
+  bg?: string
 }>`
-  background: ${({ isActive }) =>
-    isActive ? 'linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%)' : '#2972fe1a'};
+  background: ${({ isActive, bg }) =>
+    isActive ? 'linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%)' : bg || '#2972fe1a'};
   border-radius: ${({ radius }) => radius || '12px'};
   padding: ${({ padding }) => padding || ''};
   ${({ margin }) => margin && `margin: ${margin};`}
   &:hover {
-    background: ${({ isActive }) =>
-      isActive ? 'linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%)' : '#2972fe1a'};
+    background: ${({ isActive, bg }) =>
+      isActive ? 'linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%)' : bg || '#2972fe1a'};
   }
 `
 
@@ -176,11 +181,10 @@ export const MuiButton = styled(Button)<IGenericProps>`
   border-radius: 30px;
   ${variantProp}
   flex: ${({flex}) => flex || '80%'};
-  width: auto;
-  ${genericStyles}
-  padding-top: 12px;
-  padding-bottom: 12px;
+  ${genericStyles};
 `
+MuiButton.defaultProps = { padding: '12px 0', width: 'auto' }
+
 export const Table = styled.table<IGenericProps>`
   ${genericStyles}
 `
@@ -198,10 +202,8 @@ export const Header = styled(Flex)`
   z-index: 2;
 `
 
-export const PageContent = styled(Flex)`
-  padding-top: 5em;
-  padding-bottom: 5em;
-`
+export const PageContent = styled(Flex)``
+PageContent.defaultProps = { padding: '5em 0'}
 
 export const StyledTab = styled(Tab)`
 background: #FFF;
@@ -211,7 +213,7 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   text-transform: capitalize;
-  input { color: #000 !important; }
+  width: 100%;
 
   &> * { margin-bottom: .6em !important; }
 `
@@ -277,7 +279,16 @@ export const StyledLabelledControl = styled(FormControlLabel)<{controlWidth?: st
     width: ${({controlWidth}) => controlWidth || '70%'};
   }
 
-  &.label-left > span { margin-right: auto; }
+  &.label-left > span { margin-right: auto; font-weight: 600; }
+
+  &.full-label > span:nth-child(2) {
+    width: 100%;
+    display: flex;
+    font-weight: 600;    
+    span:nth-child(2) { margin-left: auto; color: #2972FE; }
+  }
+
+  .MuiSlider-root { padding: 15px 0 !important; width: 95%; align-self: start; }
 `
 
 export const StyledTextField = styled(TextField)`
@@ -320,10 +331,15 @@ export const ConfirmationPopup = styled(StyledDialog)`
       top: 0;
     }
   }
-`;
+`
 
 export const MuiAvatar = styled(Avatar)`
   border-radius: 20px;
   width: 4.4em;
   height: 4em;
+`
+
+export const StyledDropdown = styled(NativeSelect)`
+color: #000 !important;
+select { text-transform: capitalize; }
 `

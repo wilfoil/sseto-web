@@ -91,7 +91,7 @@ export const otherPaths: Array<any> = [
 
 export const productCategories = [
   {name: 'house', icon: HomeIcon},
-  {name: 'villa', icon: VillaIcon},
+  // {name: 'villa', icon: VillaIcon},
   {name: 'apartment', icon: ApartmentIcon},
   {name: 'land', icon: LandscapeIcon},
 ]

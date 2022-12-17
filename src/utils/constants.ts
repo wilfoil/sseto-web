@@ -14,3 +14,5 @@ export const COLLECTIONS = {
     LISTING: 'listings',
     REALTOR: 'realtors'
 };
+
+export const MAX_PRICES = { house: 10000000, apartment: 10000000, land: 100000000 }

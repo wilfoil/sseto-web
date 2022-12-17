@@ -1,4 +1,4 @@
-import { DivideLine, Flex, Label, HorizontalSpace, Tag, PageContent, IconBtn, Header } from 'styles/common'
+import { DivideLine, Flex, Label, HorizontalSpace, Tag, PageContent, IconBtn } from 'styles/common'
 import Gallery from 'components/ListingDetails/Gallery'
 import Location from 'components/ListingDetails/Location'
 import { Component } from 'react'
@@ -8,20 +8,13 @@ import SizeIcon from '@mui/icons-material/ZoomOutMap';
 import Chip from 'components/ListingDetails/Chip'
 import ListingCTA from 'components/mobile/ListingCTA';
 import ListingHandler from 'components/ListingHandler';
-import BackIcon from '@mui/icons-material/ArrowBack'
 import Favorite from "components/Favorite"
-import { useNavigate } from 'react-router-dom';
-
-const NavHeader = () => {
-  const navigate = useNavigate()
-    const back = () => navigate(-1)
-return <Header padding='.5em 10px' bg='transparent'><BackIcon color="primary" fontSize="large" onClick={back} /> <IconBtn><Favorite onClick={()=>{}} saved={false} fontSize='large' /></IconBtn></Header>
-}
+import NavHeader from 'components/mobile/NavHeader';
 
 class ListingDetails extends Component {
   render() {
     return <>
-    <NavHeader />
+    <NavHeader><IconBtn><Favorite onClick={()=>{}} saved={false} fontSize='large' /></IconBtn></NavHeader>
     <Gallery images={[]} />
     <PageContent columns style={{paddingTop: 0}}>
     <Flex columns align='flex-start' padding='1em 0 0 0'>

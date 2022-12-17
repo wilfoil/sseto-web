@@ -24,4 +24,4 @@ code {
 .secondary {background-color: #131629;}
 .light-secondary {background-color: #2972fe1a}
 .gray {background: #A5ABB3;}
-.primary-gradient {background: linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%);}
+.primary-gradient {background: linear-gradient(315deg, #2972FE -0.12%, #6499FF 99.88%) !important;}
