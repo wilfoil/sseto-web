@@ -343,3 +343,18 @@ export const StyledDropdown = styled(NativeSelect)`
 color: #000 !important;
 select { text-transform: capitalize; }
 `
+
+export const FilterDropdown = styled(NativeSelect)`
+background: #1C2039;
+border: 1px solid #282C49;
+border-radius: 100px;
+padding: 0 0.8em;
+
+&:before, :after { border-bottom: 0 !important; }
+&:hover {
+  :before { border-bottom: 0 !important; }
+  border: 1px solid  #347afc !important;
+}
+.MuiNativeSelect-icon { color: #FFF9 }
+}
+`

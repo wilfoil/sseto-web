@@ -1,28 +1,17 @@
 import BackIcon from '@mui/icons-material/ArrowBack'
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { Slider } from '@mui/material';
-import styled from '@emotion/styled';
-
+import Slider from '@mui/material/Slider';
 
 import ActionDialog from "components/Admin/ActionDialog";
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { Flex, Header, IconBtn, Label, MuiButton, PageContent, StyledDropdown, StyledForm, StyledLabelledControl, StyledTextField, Tag } from "styles/common";
+import { DivideLine, FilterDropdown, Flex, Header, IconBtn, Label, MuiButton, PageContent, StyledDropdown, StyledForm, StyledLabelledControl, StyledTextField, Tag } from "styles/common";
 import { calculatePriceRange, formatCurrency, priceToPercentage } from 'utils';
 import { MAX_PRICES } from 'utils/constants';
 import { searchFilterFields } from 'utils/formFields';
 import Categories from './Categories';
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent } from 'react';
 
-const FeaturesControl = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 1em;
-  background: #e7e7e71a;
-  border-top: 1px solid #e7e7e770;
-
-  > * { display: flex;margin-bottom: .1em; }
-`
 
 enum types { house = 'house', land = 'land', apartment = 'apartment' }
 
@@ -118,27 +107,35 @@ const Filter = () => {
     formik.handleChange(e)
   }
 
+  const setPlotSize = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { value, name } = e.target;
+    const { plotSize } = formik.values;
+    const valueIndex = name.includes('min') ? 0 : 1;
+    plotSize[valueIndex] = +value;
+    formik.setFieldValue('plotSize', plotSize)
+  }
+
   const renderField = ([key, value]: [string, any]) => {
     const error = (formik.errors as any)[key]
     const fieldInfo = searchFilterFields[key]
     const { type: listingType } = formik.values;
 
     switch (fieldInfo?.type) {
-      case 'dropdown':
-        const valuesArray = Object.entries(fieldInfo.values)
-        return <StyledLabelledControl
-          label={key}
-          labelPlacement="start"
-          control={
-            <StyledDropdown
-              value={value}
-              inputProps={{ name: key }}
-              onChange={formik.handleChange}
-            >
-              {valuesArray.map(([key, value]: any) => <option key={key} value={value}>{key}</option>)}
-            </StyledDropdown>
-          }
-        />
+      // case 'dropdown':
+      //   const valuesArray = Object.entries(fieldInfo.values)
+      //   return <StyledLabelledControl
+      //     label={key}
+      //     labelPlacement="start"
+      //     control={
+      //       <StyledDropdown
+      //         value={value}
+      //         inputProps={{ name: key }}
+      //         onChange={formik.handleChange}
+      //       >
+      //         {valuesArray.map(([key, value]: any) => <option key={key} value={value}>{key}</option>)}
+      //       </StyledDropdown>
+      //     }
+      //   />
 
         case 'features':
           const values = {...fieldInfo.values, ...value}
@@ -175,7 +172,33 @@ const Filter = () => {
 
       case 'plotSize':
         if (listingType !== types.land) return;
-        return <></>
+        const valuesArray = Object.entries(fieldInfo.values)
+        return <StyledLabelledControl
+          className='full-label'
+          label={key}
+          labelPlacement="top"
+          control={
+            <Flex flexChild='45%' width='100% !important' padding='0'>
+              <FilterDropdown
+              value={value[0]}
+              inputProps={{ name: `${key}-min` }}
+              onChange={setPlotSize}
+              
+            >
+              {valuesArray.map(([key, value]: any) => <option key={key} value={value}>{key}</option>)}
+            </FilterDropdown>
+            <DivideLine style={{width: '5%'}} />
+            <FilterDropdown
+              value={value[1]}
+              inputProps={{ name: `${key}-max` }}
+              onChange={setPlotSize}
+            >
+              {valuesArray.map(([key, value]: any) => <option key={key} value={value}>{key}</option>)}
+            </FilterDropdown>
+            </Flex>
+            
+          }
+        />
 
       default:
         return (<StyledTextField

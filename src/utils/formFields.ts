@@ -28,7 +28,7 @@ export const searchFilterFields: IObject = {
         furnishedx: false,
         gatedx: true,
     }},
-    plotSize: {type: 'plotSize', values: [50, 100, 200]},
+    plotSize: {type: 'plotSize', values: {'50 x 50': 2500, '50 x 100': 5000, '100 x 100': 10000, 'Acre': 43560}},
     location: {type: 'dropdown', values: []},
     area: {type: 'number'},
 }

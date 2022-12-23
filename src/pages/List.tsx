@@ -33,7 +33,7 @@ const List = () => {
           <BackIcon color="primary" fontSize="large" onClick={goBack} />
           &nbsp;&nbsp;&nbsp;&nbsp;<h1>{title}</h1>
         </Label>
-        <NavLink to="search">
+        <NavLink to="/search">
           <IconBtn>
             <SearchIcon color="primary" />
           </IconBtn>
