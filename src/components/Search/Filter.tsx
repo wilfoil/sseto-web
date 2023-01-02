@@ -11,29 +11,14 @@ import { MAX_PRICES } from 'utils/constants';
 import { searchFilterFields } from 'utils/formFields';
 import Categories from './Categories';
 import { ChangeEvent } from 'react';
-
-
-enum types { house = 'house', land = 'land', apartment = 'apartment' }
-
-interface IFormikValues {
-  isRental: boolean
-  type: types
-  location?: string,
-  price: number[]
-  beds?: number
-  baths?: number
-  features: { [key: string]: boolean }
-  plotSize: number[]
-  
-  // area: null,
-}
+import { IFormikFilterValues, ListingType } from 'types';
 
 const Filter = () => {
   const navigate = useNavigate();
-  const formik = useFormik<IFormikValues>({
+  const formik = useFormik<IFormikFilterValues>({
     initialValues: {
       isRental: true,
-      type: types.land,
+      type: ListingType.land,
       price: [100000, MAX_PRICES.house],
       beds: undefined,
       baths: undefined,
@@ -171,7 +156,7 @@ const Filter = () => {
         />
 
       case 'plotSize':
-        if (listingType !== types.land) return;
+        if (listingType !== ListingType.land) return;
         const valuesArray = Object.entries(fieldInfo.values)
         return <StyledLabelledControl
           className='full-label'

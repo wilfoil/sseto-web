@@ -223,7 +223,7 @@ export const StyledDialog = styled(Dialog)<{padding?: string, dark?: boolean, bo
   [role=dialog] {
     padding: ${({padding}) => padding || '0 1em 1em'};
     ${({dark}) => dark && 'background: #131529;'}
-    min-width: 30%;
+    width: 80%;
     color: #666 !important;
   }
 `

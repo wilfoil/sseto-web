@@ -1,14 +1,15 @@
 import { Add } from '@mui/icons-material';
 import { NativeSelect, Switch } from '@mui/material';
-import { Flex, IconBtn, MuiButton, StyledForm, StyledLabelledControl, StyledTextField } from 'styles/common';
+import { Flex, IconBtn, MuiButton, StyledForm, StyledLabelledControl, StyledTextField, Tag } from 'styles/common';
 import MediaUpload from 'components/MediaUpload';
 import { useFormik } from 'formik';
 // import toast from 'react-hot-toast';
-import { ListingType } from 'types';
+import { IListing, ListingType } from 'types';
 import { listingFormFields } from 'utils/formFields';
 import ActionDialog from './ActionDialog';
 import styled from '@emotion/styled';
 import { ChangeEvent } from 'react';
+import LocationInput from 'components/LocationInput';
 
 const StyledSelect = styled(NativeSelect)`
 color: #000 !important;
@@ -25,18 +26,17 @@ const FeaturesControl = styled.div`
 `
 
 const NewListingForm = ({ onOpen }: any) => {
-  const formik = useFormik({
+  const formik = useFormik<IListing>({
     initialValues: {
       title: '',
       overview: '',
       price: 0,
-      type: ListingType.apartment,
-      assigned: {},
-      gallery: [],
-      features: { baths: 0, beds: 0},
       location: [],
-      isAvailable: true,
+      type: ListingType.apartment,
+      assigned: undefined,
       isRental: true,
+      gallery: [],
+      features: {},
     },
     onSubmit: async (values: any) => {
       console.log(values);
@@ -73,24 +73,30 @@ const NewListingForm = ({ onOpen }: any) => {
     (features as any)[name] = value;
   }
 
-  const renderFeatures = (values: any) => (
-    <FeaturesControl>
-      {Object.entries(values).map(([key, value]) => (
-        <StyledLabelledControl controlWidth='40%' key={key} label={key} labelPlacement="start" control={
-        <StyledTextField
-        // error={!!error}
-          id={key}
-          name={key}
-          type="number"
-          variant="standard"
-          // helperText={error}
-          value={value}
-          onChange={onChangeFeature}
-        />}
-        />
-      ))}
-    </FeaturesControl>
-  )
+  const setFeature = (toggle: string, value: boolean) => () => {    
+    const { features } = formik.values
+    features[toggle] = value;
+    formik.setFieldValue('features', features)
+  }
+
+  // const renderFeatures = (values: any) => (
+  //   <FeaturesControl>
+  //     {Object.entries(values).map(([key, value]) => (
+  //       <StyledLabelledControl controlWidth='40%' key={key} label={key} labelPlacement="start" control={
+  //       <StyledTextField
+  //       // error={!!error}
+  //         id={key}
+  //         name={key}
+  //         type="number"
+  //         variant="standard"
+  //         // helperText={error}
+  //         value={value}
+  //         onChange={onChangeFeature}
+  //       />}
+  //       />
+  //     ))}
+  //   </FeaturesControl>
+  // )
 
   const renderField = ([key, value]: [string, any]) => {
     const error = (formik.errors as any)[key]
@@ -102,6 +108,15 @@ const NewListingForm = ({ onOpen }: any) => {
           label={key}
           labelPlacement="start"
         />
+      case 'features':
+        const values = {...fieldInfo.values, ...value}
+        return <StyledLabelledControl
+        className='label-left'
+        control={renderFeatures(values, setFeature)}
+        label={key}
+        labelPlacement="top"
+        controlWidth='100%'
+      />
       case 'dropdown':
         const valuesArray = Object.entries(fieldInfo.values)
         return <StyledLabelledControl
@@ -128,16 +143,16 @@ const NewListingForm = ({ onOpen }: any) => {
         />
 
       case 'location':
-        return;
+        return <LocationInput />;
 
-      case 'object':
-        return <StyledLabelledControl
-        className='label-left'
-        control={renderFeatures(value)}
-        label={key}
-        labelPlacement="top"
-        controlWidth='100%'
-      />
+      // case 'object':
+      //   return <StyledLabelledControl
+      //   className='label-left'
+      //   control={renderFeatures(value)}
+      //   label={key}
+      //   labelPlacement="top"
+      //   controlWidth='100%'
+      // />
       default:
         return (<StyledTextField
           error={!!error}
@@ -159,10 +174,10 @@ const NewListingForm = ({ onOpen }: any) => {
     onOpen()
   }
   // Capture current location / assuming it's the listing location for now
-  navigator.geolocation.getCurrentPosition((pos) =>{
-    const { coords } = pos;
-    formik.setFieldValue('location', [coords.latitude, coords.longitude])
-  });
+  // navigator.geolocation.getCurrentPosition((pos) =>{
+  //   const { coords } = pos;
+  //   formik.setFieldValue('location', [coords.latitude, coords.longitude])
+  // });
 
   
 
@@ -178,7 +193,15 @@ const NewListingForm = ({ onOpen }: any) => {
 const FormDialog = () => {
   const listingddButton = (onOpen: () => void) => (<IconBtn onClick={onOpen}><Add /></IconBtn>)
 
-  return <ActionDialog dialogTitle='Add Listing' renderToggle={listingddButton} >{NewListingForm}</ActionDialog>
+  return <ActionDialog dialogTitle='Add Listing' renderToggle={listingddButton}>{NewListingForm}</ActionDialog>
 }
+
+const renderFeatures = (values: {[key: string]: boolean}, onClick: (key: string, value: boolean) => () => void) => (
+  <Flex gap='6px' flexChild='fit-content' space='start' padding='.5em 0' wrap={true}>
+    {Object.entries(values).map(([key, value]) => (
+      <Tag key={key} label={key} variant={value ? 'filled' : 'outlined'} color='primary' height='25px' onClick={onClick(key, !value)} />
+    ))}
+  </Flex>
+)
 
 export default FormDialog;

@@ -12,11 +12,12 @@ export interface IListing {
     location: number[]
     overview: string
     price: number
-    isAvailable: boolean
-    isRental: boolean
     type: ListingType
+    isRental: boolean
     gallery: string[]
-    assigned: IRealtor
+    assigned?: IRealtor
+    features: { [key: string]: boolean }
+    plotSize?: number
 }
 
 export interface IListingUpdate {
@@ -30,3 +31,14 @@ export interface IListingUpdate {
     gallery?: string[]
     assigned?: IRealtor
 }
+
+export interface IFormikFilterValues {
+    isRental: boolean
+    type: ListingType
+    location?: string,
+    price: number[]
+    beds?: number
+    baths?: number
+    features: { [key: string]: boolean }
+    plotSize: number[]
+  }
